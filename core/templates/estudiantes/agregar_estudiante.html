@@ -1,0 +1,41 @@
+{% extends "comun/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Registrar un nuevo estudiante</h1>
+
+<section>
+    <div class="container overflow-hidden">
+        <div class="row gx-5">
+            <div class="col-8">
+                <div class="p-3">Custom column padding</div>
+            </div>
+            <div class="col">
+                <div class="card" style="width: 400px">
+                    <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+                        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid custom-img-size"/>
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(240, 240, 240, 0.15);"></div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Informacion del Estudiante</h5>
+                        <p class="card-text">Para validar la matricula, se debe considerar: 1. Cedula original y copia...</p>
+                        <a href="#!" class="btn btn-primary" data-mdb-ripple-init>Button</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-5 mt-3">
+            <div class="col">
+                <form role="form" method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary">Registrar estudiante</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

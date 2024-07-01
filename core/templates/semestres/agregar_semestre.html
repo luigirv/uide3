@@ -1,0 +1,16 @@
+{% extends "comun/base.html" %}
+
+{% block  content %}
+<h1> Regristrar un nuevo Semestre </h1>
+
+<section>
+    <form role= "form" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }} 
+
+        <button type="submit"> Registrar Semestre </button>
+    </form>
+</section>
+
+{% endblock %}

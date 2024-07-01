@@ -1,0 +1,56 @@
+{% extends "comun/base.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1 class="alert alert-light text-bg-primary text-center">ADMINISTRACION DE ESTUDIANTES</h1>
+
+<!-- Agregamos la tabla de estudiantes -->
+<div>
+  <a href="/core/agregar_estudiante" class="btn btn-primary m-3">Agregar nuevo estudiante</a>
+</div>
+
+<table class="table table-dark table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">Cedula</th>
+        <th scope="col" class="text-center">Primer Apellido</th>
+        <th scope="col" class="text-center">Segundo Apellido</th>
+        <th scope="col" class="text-center">Primer Nombre</th>
+        <th scope="col" class="text-center">Segundo Nombre</th>
+        <th scope="col" class="text-center">Celular</th>
+        <th scope="col" class="text-center">Genero</th>
+        <th scope="col" class="text-center">Correo</th>
+        <th scope="col" class="text-center">Administrar</th>
+      </tr>
+    </thead>
+    <tbody>
+        <!-- Recibimos desde el views una lista [] -->
+        {% for estudiante in estudiantes %}
+        <tr>
+            <th scope="row" class="text-center">{{ estudiante.cedula_ruc }}</th>
+            <td class="text-center">{{ estudiante.primerApellido }}</td>
+            <td class="text-center">{{ estudiante.segundoApellido }}</td>
+            <td class="text-center">{{ estudiante.primer_nombre }}</td>
+            <td class="text-center">{{ estudiante.segundo_nombre }}</td>
+            <td class="text-center">{{ estudiante.celular }}</td>
+            <td class="text-center">{{ estudiante.genero }}</td>
+            <td class="text-center">{{ estudiante.correo }}</td>
+            <td class="text-center">
+
+            <td>  
+              <a href="/core/actualizar_estudiante/{{ estudiante.id }}"class="btn btn-primary">Actualizar</a>
+              <a href="/core/eliminar_estudiante/{{ estudiante.id }}"class="btn btn-danger">Eliminar</a>
+              <a href="/core/ver_estudiante/{{ estudiante.id }}"class="btn btn-success">Ver</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% else %}
+
+{% endif %}
+
+{% endblock %}

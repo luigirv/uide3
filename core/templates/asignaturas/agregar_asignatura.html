@@ -1,0 +1,14 @@
+{% extends "comun/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Registrar una nueva Semestre</h1>
+    <section>
+        <form role="form" method="post" class="form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary mt-3">Registrar Semestre</button>
+        </form>
+    </section>
+</div>
+{% endblock %}

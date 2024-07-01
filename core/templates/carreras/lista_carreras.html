@@ -1,0 +1,39 @@
+{% extends "comun/base.html" %}
+
+{% block content %}
+<h1 class="alert alert-light text-bg-primary text-center">ADMINISTRACION DE CARRERA</h1>
+
+<div>
+  <a href="/core/agregar_carrera" class="btn btn-primary m-3">Agregar nueva carrera</a>
+</div>
+
+<table class="table table-dark table-striped-columns">
+    <thead>
+        <tr>
+            <th scope="col">Nro.</th>
+            <th scope="col">Nombre Carrera</th>
+            <th scope="col">Modalidad</th>
+            <th scope="col">Duracion</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Recibimos desde el views una lista [] -->
+        {% for carrera in carreras %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ carrera.nombres }}</td>
+            <td>{{ carrera.modalidad }}</td>
+            <td>{{ carrera.aniosEstudio }}</td>
+            <td>{{ carrera.descripcion }}</td>
+            <td>
+                <a href="{% url 'actualizar_carrera' carrera.id %}" class="btn btn-warning btn-sm">Actualizar</a>
+                <a href="{% url 'eliminar_carrera' carrera.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+

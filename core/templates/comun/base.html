@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <!-- ENLAZAMOS AL ARCHIVO STYLES.HTML-->
+     {% include "comun/styles.html" %}
+    <body>
+
+        <div class = "container">
+            {% include "comun/header.html" %}
+
+            {% block  content %}
+
+            <!-- AQUI VA EL CONTENIDO DE LA PAGINA-->
+
+
+            {% endblock %}
+            
+
+            {% include "comun/footer.html" %}
+        </div>
+     
+        
+    </body>
+</html>
